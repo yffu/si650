@@ -41,3 +41,5 @@ import nltk.data
 classifier = nltk.data.load('classifiers/movie_reviews_NaiveBayes.pickle')
 
 classifier.classify(feats)
+
+
