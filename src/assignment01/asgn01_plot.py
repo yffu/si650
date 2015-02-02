@@ -12,13 +12,13 @@ def plotter(filenames):
     summary_info = list();
     for f in filenames: 
       
-        if (os.path.isfile(f+'summary.txt')):
-            summary_info.append(eval(open(f+'summary.txt', 'r').read()))
+        if (os.path.isfile('output/'+ f +'summary.txt')):
+            summary_info.append(eval(open('output/'+f+'summary.txt', 'r').read()))
         else:
             return
         
     
-    hand =open('summary_pp.txt', 'w')
+    hand =open('output/summary_pp.txt', 'w')
     hand.write(str(pp.pprint(summary_info)))
     hand.close()
     

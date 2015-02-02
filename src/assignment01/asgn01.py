@@ -58,11 +58,11 @@ def plot_cnt_freq(filename):
                 
             pos_info = None
             #POS tagging
-            if (os.path.isfile(filename+'pos_info.txt')):
-                pos_info = eval(open(filename+'pos_info.txt', 'r').read())
+            if (os.path.isfile('output/'+filename+'pos_info.txt')):
+                pos_info = eval(open('output/'+filename+'pos_info.txt', 'r').read())
             else:
                 pos_info = pos_tag(word_tokenize(blog_string))
-                target = open(filename+'pos_info.txt', 'w')
+                target = open('output/'+filename+'pos_info.txt', 'w')
                 target.write(str(pos_info))
                 
             pos_counts = dict();
@@ -115,11 +115,11 @@ def plot_cnt_freq(filename):
         #with open("summary_"+filename, "w") as hand:
         #    a=csv.writer(hand, delimiter = '\t', newline='')
         
-        if (os.path.isfile(filename+'summary.txt')):
-            summary = eval(open(filename+'summary.txt', 'r').read())
+        if (os.path.isfile('output/'+filename+'summary.txt')):
+            summary = eval('output/'+open(filename+'summary.txt', 'r').read())
         else:
-            target = open(filename+'summary.txt', 'w')
-            target.write(str(summary_stats))
+            target = open('output/'+filename+'summary.txt', 'w')
+            target.write('output/'+str(summary_stats))
 
         return summary_stats
         
