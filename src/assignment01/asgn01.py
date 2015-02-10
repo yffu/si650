@@ -63,7 +63,7 @@ def plot_cnt_freq(filename):
             
             total_chars = 0;
             total_words = 0;
-            total_capital =0;
+            total_capital = 0;
             
             for word, freq in freq_blog_cap:
                 total_chars += len(word)*freq
@@ -75,16 +75,18 @@ def plot_cnt_freq(filename):
                 summary_stats["number of capital letters"] = total_capital
                 
             pos_info = None
-            #POS tagging
-            if (os.path.isfile('output/'+filename+'pos_info.txt')):
-                pos_info = eval(open('output/'+filename+'pos_info.txt', 'r').read())
+            #POS tagging 
+            if (os.path.isfile('output/'+filename+'pos_info_uncap.txt')):
+                pos_info = eval(open('output/'+filename+'pos_info_uncap.txt', 'r').read())
             else:
-                pos_info = pos_tag(word_tokenize(blog_string))
-                target = open('output/'+filename+'pos_info.txt', 'w')
+                pos_info = pos_tag(word_tokenize(blog_string.lower()))
+                target = open('output/'+filename+'pos_info_uncap.txt', 'w')
                 target.write(str(pos_info))
                 
             pos_counts = dict();
             cross_walk = {'NN': 'noun','JJ': 'adjectives', 'VB': 'verbs', 'RB': 'adverbs', 'PRP': 'pronouns'}
+            
+            # pos info is unfiltered. 
             
             for word, pos in pos_info:
                 pos_type = cross_walk.get(pos);
@@ -99,7 +101,7 @@ def plot_cnt_freq(filename):
             
             pos_word_counts = [(k, len(list(group))) for k, group in groupby(pos_info_sort, lambda x: x )]
 
-            # ((word, pos) counts)            
+            # ((word, pos) counts)    but the problem is that pos does not combine        
             tmp1 = sorted(pos_word_counts, key= lambda x: x[0][1])
             tmp2=[ (k, sorted(group, key= lambda x: x[1], reverse=True)) for k, group in groupby(tmp1, lambda x: x[0][1])]
             
