@@ -1,0 +1,125 @@
+1. ****************************** Edit Distance [10 points]
+
+“heterogeneous” and “hetterogenous”: 2
+“wolverine tower” and “wolverrine taller”: 4
+
+2. ****************************** Vector Representation and Similarity [25 points]
+
+a. 
+dimensions:
+
+[computer, information, school, informatics, computing, library, science, of, and]
+
+vector represention:
+
+q:  [1, 1, 0, 0, 0, 0, 0, 0, 0]
+d1: [0, 1, 1, 0, 0, 0, 0, 1, 0]
+d2: [0, 0, 1, 1, 1, 0, 0, 1, 1]
+d3: [0, 1, 0, 1, 0, 1, 1, 1, 1]
+
+b.
+d1: 1/sqrt(6)
+d2: 0
+d3: 1/(2*sqrt(3))
+
+d1 > d3 > d2
+
+c.
+
+dimensions:
+
+[computer, information, school, informatics, computing, library, science]
+
+vector represention:
+
+q:  [1, 1, 0, 0, 0, 0, 0]
+d1: [0, 1, 1, 0, 0, 0, 0] 	1/2
+d2: [0, 0, 1, 1, 1, 0, 0]	0
+d3: [0, 1, 0, 1, 0, 1, 1]	1/(2*sqrt(2))
+
+ranking did not change
+
+d.
+
+dimensions:
+
+[comput*, informat*, school, library, science]
+
+vector represention:
+
+q:  [1, 1, 0, 0, 0]
+d1: [0, 1, 0, 0, 0] 	1/sqrt(2)
+d2: [1, 1, 1, 0, 0]		2/sqrt(6)
+d3: [0, 2, 0, 1, 1]		1/sqrt(3)
+
+d2 > d1 > d3
+
+e.
+
+you can use inverse document frequency as a weight to term frequency
+
+weights:
+
+[computer, information, school, informatics, computing, library, science]
+	
+idf: 
+
+[log(3), 0, log(3), log(3), log(3)]
+
+q:  [1, 1, 0, 0, 0]
+d1: [0, 0, 0, 0, 0] 	0
+d2: [log(3), 0, log(3), 0, 0]	1/2
+d3: [0, 0, 0, log(3), log(3)]	0			
+
+all of the scores are reduced
+
+3. ****************************** Probabilistic Reasoning and Bayes Rule [20 points]
+
+a. 	P(S = 1 | A = 1; L = 0; K = 0) and P(S = 0 | A = 1; L = 0; K = 0)
+
+	P(A = 1; L = 0; K = 0 | S = 1) = P(A = 1 | S = 1) * P(L = 0 | S = 1) * P(K = 0 | S = 1)
+	
+	= (0.99 * 0.8 * 0.95)
+	
+	P(A = 1; L = 0; K = 0 | S = 0)
+	
+	= (0.1 * 0.1 * 0.1)
+	
+	P(S = 1 | A = 1; L = 0; K = 0) = [ P(A = 1; L = 0; K = 0 | S = 1) * P(S = 1)]/[P(A = 1; L = 0; K = 0)]
+	
+	~ (0.99 * 0.8 * 0.95 * 0.1) / [(0.1 * 0.1 * 0.1 * 0.9) + (0.99 * 0.8 * 0.95 * 0.1)]
+	
+	
+	####conclusions####
+	
+	P(S = 1 | A = 1; L = 0; K = 0)
+	
+	~ 0.9882
+	
+	taking the complement: P(S = 0 | A = 1; L = 0; K = 0) = 1 - P(S = 1 | A = 1; L = 0; K = 0)
+	
+	P(S = 0 | A = 1; L = 0; K = 0)
+	
+	~ 0.0118
+	
+	P(S = 1 | A = 1; L = 0; K = 0) > P(S = 0 | A = 1; L = 0; K = 0)
+	
+	we'd conclude it is a spam
+	
+b.	P(S = 0) + P(S = 1) = 1
+	
+	no other constraints
+	
+c.  P(S = 1 | A = 1; L = 0; K = 0)  --> 0  as:
+	
+	P(A = 1 | S = 1) --> 0
+	
+	P(L = 1 | S = 1) --> 1
+	
+	P(K = 1 | S = 1) --> 1
+
+	this would cause us to reverse our conclusion, to S not being a spam. 
+	
+4. ****************************** Word Distribution [45 points]
+
+
