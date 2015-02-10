@@ -123,3 +123,9 @@ c.  P(S = 1 | A = 1; L = 0; K = 0)  --> 0  as:
 4. ****************************** Word Distribution [45 points]
 
 
+please refer to the two plots:
+
+the two plots do look like power law distributions.
+
+the two distributions are actually very similar. 
+
