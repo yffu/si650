@@ -11,6 +11,7 @@ from itertools import groupby
 import matplotlib.pyplot as plt
 from math import log
 import csv, re, os.path
+import pprint;
 
 def plot_cnt_freq(filename):
     
@@ -19,17 +20,34 @@ def plot_cnt_freq(filename):
     summary_stats= dict();
     
     with open ('stoplist.txt') as stops:
-        stop_words = [w.strip() for w in stops]
+        stop_words = [w.strip().lower() for w in stops]
         with open(filename) as blog:
             
             blog_string =blog.read()
             blog_words=word_tokenize(blog_string)
             blog_words.sort()
             # (word, frequency)
-            freq_blog= [(key, len(list(group))) for key, group in groupby(blog_words, lambda x: x)]
+
+            if (os.path.isfile('output/'+filename+'_cap_wdcnt.txt')):
+                freq_blog_cap = eval(open('output/'+filename+'_cap_wdcnt.txt', 'r').read())
+            else:
+                freq_blog_cap= [(key, len(list(group))) for key, group in groupby(blog_words, lambda x: x)]
+                
+                target = open('output/'+filename+'_cap_wdcnt.txt', 'w')
+                target.write(str(freq_blog_cap))
+            
+            
+            if (os.path.isfile('output/'+filename+'_wdcnt.txt')):
+                freq_blog = eval(open('output/'+filename+'_wdcnt.txt', 'r').read())
+            else:
+                freq_blog= [(key, len(list(group))) for key, group in groupby(blog_words, lambda x: x.lower())]
+                
+                target = open('output/'+filename+'_wdcnt.txt', 'w')
+                target.write(str(freq_blog))
             
             # filter out stop words
-            freq_blog_filtered = [f for f in freq_blog if f[0].lower() not in stop_words]
+                
+            freq_blog_filtered = [f for f in freq_blog if f[0] not in stop_words]
             
             # vocabulary size
             
@@ -47,13 +65,13 @@ def plot_cnt_freq(filename):
             total_words = 0;
             total_capital =0;
             
-            for word, freq in freq_blog:
+            for word, freq in freq_blog_cap:
                 total_chars += len(word)*freq
                 total_words += freq
                 total_capital += freq * len(pattern.findall(word))
             
             if total_chars != 0 and total_words != 0:
-                summary_stats["avg chars per word"] =total_chars/total_words
+                summary_stats["avg chars per word"] = total_chars/float(total_words)
                 summary_stats["number of capital letters"] = total_capital
                 
             pos_info = None
@@ -116,15 +134,18 @@ def plot_cnt_freq(filename):
         #    a=csv.writer(hand, delimiter = '\t', newline='')
         
         if (os.path.isfile('output/'+filename+'summary.txt')):
-            summary = eval('output/'+open(filename+'summary.txt', 'r').read())
+            summary = eval(open('output/'+filename+'summary.txt', 'r').read())
         else:
             target = open('output/'+filename+'summary.txt', 'w')
             target.write('output/'+str(summary_stats))
 
         return summary_stats
+    
+pp = pprint.PrettyPrinter(indent=4, depth = 10)
+
         
 summary=plot_cnt_freq('blog.txt')
-print summary
+pp.pprint(summary)
 
 summary=plot_cnt_freq('congress_speech.txt')
-print summary
+pp.pprint(summary)
