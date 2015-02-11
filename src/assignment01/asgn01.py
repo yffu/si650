@@ -55,7 +55,17 @@ def plot_cnt_freq(filename):
             
             # stopword frequency
             
-            summary_stats["stop frequency"] = [f for f in freq_blog if f[0].lower() in stop_words]
+            stopwd_freq = 0;
+            totalwd_freq=0;
+            
+            for w, cnt in freq_blog:
+                if w in stop_words:
+                    stopwd_freq += cnt
+                totalwd_freq+=cnt
+            
+            summary_stats["stop frequency"] = stopwd_freq/float(totalwd_freq)
+            
+            #[f for f in freq_blog if f[0].lower() in stop_words]
             
             # number of capital letters
             
