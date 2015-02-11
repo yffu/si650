@@ -62,7 +62,7 @@ for the blog:
                                          ('make', 66),
                                          ('do', 65),
                                          ('go', 61)]},
-    'vocabulary size': [16981, 16384]}
+    'vocabulary size': [16981, 16384]} <- with and without stopwords
     
 for the speech:
     
@@ -126,4 +126,4 @@ for the speech:
                                          ('work', 64),
                                          ('take', 58),
                                          ('improve', 55)]},
-    'vocabulary size': [10930, 10524]}
+    'vocabulary size': [10930, 10524]} <- with and without stopwords
