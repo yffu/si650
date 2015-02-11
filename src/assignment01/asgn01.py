@@ -8,7 +8,6 @@ Created on Feb 1, 2015
 from nltk.tokenize import word_tokenize
 from nltk.tag import pos_tag
 from itertools import groupby
-import matplotlib.pyplot as plt
 from math import log
 import csv, re, os.path
 import pprint;

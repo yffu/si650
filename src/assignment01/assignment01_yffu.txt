@@ -129,3 +129,35 @@ the two plots do look like power law distributions.
 
 the two distributions are actually very similar. 
 
+a) vocab size: blog > speech
+
+b) frequency of stop words: blog > speech
+
+c) number of capital letters: blog > speech
+
+d) avg chars per word: speech > blog
+
+e) 	blog
+      'adjectives': 6921,
+      'adverbs': 4144,
+      'noun': 23180,
+      'pronouns': 3831,
+      'verbs': 3702
+	speech
+      'adjectives': 8347,
+      'adverbs': 2952,
+      'noun': 21227,
+      'pronouns': 2505,
+      'verbs': 4039
+
+it seems the speech is richer in proportion of adjective and verbs. 
+
+while blog is more of nouns, adverbs, pronouns. 
+
+Explanation:
+
+The speech is more formal language and has more distinct ideas, meaning that words used are on average longer.
+There are fewer stop words since it is less colloquial, and instead uses more verbs and adjectives. There are also
+more capital letters in blog, and this may be due to the shorter sentence structure leading to more capitalizations. 
+
+please see the other file for part 4 details.   
