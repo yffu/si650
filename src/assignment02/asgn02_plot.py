@@ -9,7 +9,7 @@ Created on Mar 15, 2015
 import matplotlib.pyplot as plt
 from itertools import groupby
 
-values = eval(open('result_1_processed.txt', 'r').read())
+values = eval(open('result_pl2_processed.txt', 'r').read())
 
 labels = list()
 
@@ -25,7 +25,7 @@ for key in values:
     plt.plot(constant, map_val, label=key)
 
 plt.ylabel('MAP')
-plt.xlabel('Okapi_b')
-plt.xlim([0,1])
+plt.xlabel('PL2_c')
+plt.xlim([0,20])
 plt.legend()
 plt.show()

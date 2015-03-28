@@ -1,0 +1,274 @@
+
+<!-- saved from url=(0056)http://infolab.ece.udel.edu:8008/VIRLab_UMich/evaFun.php -->
+<html class="no-js" lang="en-US"><!--<![endif]--><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><script type="text/javascript" async="" src="./results_3_pl2_files/ados"></script>
+	<title>Evaluation | IR virtual Lab</title>
+<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<meta name="author" content="Hao Wu">
+	<meta name="description" content="Information Retrieval Virtual Lab">
+
+	<meta name="viewport" content="width=device-width">
+
+	<link rel="shortcut icon" href="http://www.udel.edu/modules/icons/images/ud.ico">
+	<link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css">
+  <script src="./results_3_pl2_files/jquery-1.9.1.js"></script>
+  <script src="./results_3_pl2_files/jquery-ui.js"></script>
+  <script src="./results_3_pl2_files/jquery-linedtextarea.js"></script>
+  <script src="./results_3_pl2_files/plugins.js"></script>
+  <script src="./results_3_pl2_files/main.js"></script>
+
+	<link rel="stylesheet" href="http://jqueryui.com/jquery-wp-content/themes/jquery/css/base.css?v=1">
+	<link rel="stylesheet" href="http://jqueryui.com/jquery-wp-content/themes/jqueryui.com/style.css">
+	<link href="./results_3_pl2_files/jquery-linedtextarea.css" type="text/css" rel="stylesheet">
+
+</head>
+<body class="single-author singular">
+
+
+<div id="container">
+	<div id="logo-events" class="constrain clearfix">
+		<a href="http://infolab.ece.udel.edu:8008/VIRLab_UMich/home.php"><img src="./results_3_pl2_files/logo.png"></a>
+
+	<nav id="main" class="constrain clearfix">
+	</nav>
+
+	<div id="content-wrapper" class="clearfix row">
+
+
+
+
+
+<div class="content-right eight columns">
+
+	<div id="sidebar" class="widget-area" role="complementary">
+	<aside class="widget" style="float:left;">
+		<h3 class="widget-title">Retrieval Function</h3>
+		<ul>
+			<li><a href="http://infolab.ece.udel.edu:8008/VIRLab_UMich/addFun.php">Create Function</a></li><li><a href="http://infolab.ece.udel.edu:8008/VIRLab_UMich/manageFun.php">Manage Function</a></li>	</ul>
+	</aside>
+	<aside class="widget" style="float:left;">
+		<h3 class="widget-title">Search Engine</h3>
+		<ul>
+			<li><a href="http://infolab.ece.udel.edu:8008/VIRLab_UMich/addEngine.php">Create Search Engine</a></li>
+			<li><a href="http://infolab.ece.udel.edu:8008/VIRLab_UMich/manageEngine.php">Manage Search Engine</a></li>
+			<li><a href="http://infolab.ece.udel.edu:8008/VIRLab_UMich/compareEngines.php">Compare Search Engines</a></li>	
+		</ul>
+	</aside>
+	<aside class="widget" style="float:left;">
+		<h3 class="widget-title">LeaderBoard</h3>
+		<ul>
+			<li><a href="http://infolab.ece.udel.edu:8008/VIRLab_UMich/leaderBoard.php">Summary</a></li>
+			<li><a href="http://infolab.ece.udel.edu:8008/VIRLab_UMich/leaderBoardPer.php">Per-collection</a></li>
+		</ul>
+	</aside>
+
+	<aside class="widget" style="float:left;">
+	<h3 class="widget-title">Admin</h3><ul>
+	<li><a href="http://infolab.ece.udel.edu:8008/VIRLab_UMich/resetPW.php"> change Password </a></li>
+
+	</ul></aside>
+	<aside class="widget" style="float:left;">
+                <h3 class="widget-title">About</h3>
+		<ul>
+                        <li><a href="http://infolab.ece.udel.edu:8008/about.php">People</a></li>   </ul>
+        </aside>
+
+</div>
+
+<script>
+function eva_click(clicked_id)
+{
+	alert("The evaluation may take several minutes! Thanks for your patient!");
+	var strs = clicked_id.split(",");
+	document.forms['evaForm'].collectionID.value = strs[0];
+	document.forms['evaForm'].functionID.value = strs[1];
+	document.forms['evaForm'].submit();
+}
+</script>
+
+ 
+
+<div id="content">
+<p text-align:right="">Welcome,yffu,<a href="http://infolab.ece.udel.edu:8008/VIRLab_UMich/logout.php">logout</a></p><br>
+<h1> PL2 </h1><br>
+<textarea class="lined" name="txtarea" rows="10" cols="50" disabled="disabled">double c= [1 1.5 2 4 5 6 10 20];
+
+for(occur)
+{
+	double tfn_td = tf[i] * log(1+c*docLengthAvg/docLength);
+  	double l_t = docN/TFC[i];
+  	double step_1 = tfn_td * log(tfn_td*l_t)/log(2);
+    double step_2 = log(2.718)/log(2)*(1/l_t - tfn_td);
+    double step_3 = 0.5*log(2*3.14*tfn_td)/log(2);
+  	double step_4 = qf[i]/(tfn_td+1);
+  	score += (step_1+step_2+step_3)*step_4;
+}
+</textarea>
+<h1>doe</h1><br>
+<thread>
+</thread><table class="ui-widget ui-widget-content">
+<tbody><tr class="ui-widget-header">
+<th>MAP</th>
+<th>P30</th>
+</tr>
+
+</tbody><tbody>
+<tr>
+<td>0.1691</td>
+<td>0.2067</td>
+</tr>
+<tr>
+<td>0.1768</td>
+<td>0.2152</td>
+</tr>
+<tr>
+<td>0.1787</td>
+<td>0.2219</td>
+</tr>
+<tr>
+<td>0.1893</td>
+<td>0.2276</td>
+</tr>
+<tr>
+<td>0.1894</td>
+<td>0.2286</td>
+</tr>
+<tr>
+<td>0.1896</td>
+<td>0.2305</td>
+</tr>
+<tr>
+<td>0.188</td>
+<td>0.2267</td>
+</tr>
+<tr>
+<td>0.186</td>
+<td>0.2286</td>
+</tr>
+</tbody></table>
+<br><br>
+<h1>robust04</h1><br>
+<thread>
+</thread><table class="ui-widget ui-widget-content">
+<tbody><tr class="ui-widget-header">
+<th>MAP</th>
+<th>P30</th>
+</tr>
+
+</tbody><tbody>
+<tr>
+<td><button id="4,77732" onclick="eva_click(this.id)">Evaluation</button></td>
+</tr>
+<tr>
+<td><button id="4,77733" onclick="eva_click(this.id)">Evaluation</button></td>
+</tr>
+<tr>
+<td><button id="4,77734" onclick="eva_click(this.id)">Evaluation</button></td>
+</tr>
+<tr>
+<td><button id="4,77784" onclick="eva_click(this.id)">Evaluation</button></td>
+</tr>
+<tr>
+<td><button id="4,77785" onclick="eva_click(this.id)">Evaluation</button></td>
+</tr>
+<tr>
+<td><button id="4,77786" onclick="eva_click(this.id)">Evaluation</button></td>
+</tr>
+<tr>
+<td><button id="4,77787" onclick="eva_click(this.id)">Evaluation</button></td>
+</tr>
+<tr>
+<td><button id="4,77788" onclick="eva_click(this.id)">Evaluation</button></td>
+</tr>
+</tbody></table>
+<br><br>
+<h1>wt2g</h1><br>
+<thread>
+</thread><table class="ui-widget ui-widget-content">
+<tbody><tr class="ui-widget-header">
+<th>MAP</th>
+<th>P30</th>
+</tr>
+
+</tbody><tbody>
+<tr>
+<td><button id="5,77732" onclick="eva_click(this.id)">Evaluation</button></td>
+</tr>
+<tr>
+<td><button id="5,77733" onclick="eva_click(this.id)">Evaluation</button></td>
+</tr>
+<tr>
+<td><button id="5,77734" onclick="eva_click(this.id)">Evaluation</button></td>
+</tr>
+<tr>
+<td><button id="5,77784" onclick="eva_click(this.id)">Evaluation</button></td>
+</tr>
+<tr>
+<td><button id="5,77785" onclick="eva_click(this.id)">Evaluation</button></td>
+</tr>
+<tr>
+<td><button id="5,77786" onclick="eva_click(this.id)">Evaluation</button></td>
+</tr>
+<tr>
+<td><button id="5,77787" onclick="eva_click(this.id)">Evaluation</button></td>
+</tr>
+<tr>
+<td><button id="5,77788" onclick="eva_click(this.id)">Evaluation</button></td>
+</tr>
+</tbody></table>
+<br><br>
+<h1>ap8889</h1><br>
+<thread>
+</thread><table class="ui-widget ui-widget-content">
+<tbody><tr class="ui-widget-header">
+<th>MAP</th>
+<th>P30</th>
+</tr>
+
+</tbody><tbody>
+<tr>
+<td><button id="6,77732" onclick="eva_click(this.id)">Evaluation</button></td>
+</tr>
+<tr>
+<td><button id="6,77733" onclick="eva_click(this.id)">Evaluation</button></td>
+</tr>
+<tr>
+<td><button id="6,77734" onclick="eva_click(this.id)">Evaluation</button></td>
+</tr>
+<tr>
+<td><button id="6,77784" onclick="eva_click(this.id)">Evaluation</button></td>
+</tr>
+<tr>
+<td><button id="6,77785" onclick="eva_click(this.id)">Evaluation</button></td>
+</tr>
+<tr>
+<td><button id="6,77786" onclick="eva_click(this.id)">Evaluation</button></td>
+</tr>
+<tr>
+<td><button id="6,77787" onclick="eva_click(this.id)">Evaluation</button></td>
+</tr>
+<tr>
+<td><button id="6,77788" onclick="eva_click(this.id)">Evaluation</button></td>
+</tr>
+</tbody></table>
+<br><br>
+<form id="evaForm" action="./results_3_pl2_files/results_3_pl2.html" method="post">
+<input type="hidden" name="collectionID" value="">
+<input type="hidden" name="functionID" value="">
+<input type="hidden" name="groupID" value="1210">
+</form>
+<font color="red"></font>
+<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+</div>
+
+</div>
+
+
+
+	</div>
+</div>
+
+
+
+
+</div><div id="cboxOverlay" style="display: none;"></div><div id="colorbox" class="" style="display: none;"><div id="cboxWrapper"><div><div id="cboxTopLeft" style="float: left;"></div><div id="cboxTopCenter" style="float: left;"></div><div id="cboxTopRight" style="float: left;"></div></div><div style="clear: left;"><div id="cboxMiddleLeft" style="float: left;"></div><div id="cboxContent" style="float: left;"><div id="cboxLoadedContent" style="width: 0px; height: 0px; overflow: hidden; float: left;"></div><div id="cboxTitle" style="float: left;"></div><div id="cboxCurrent" style="float: left;"></div><div id="cboxNext" style="float: left;"></div><div id="cboxPrevious" style="float: left;"></div><div id="cboxSlideshow" style="float: left;"></div><div id="cboxClose" style="float: left;"></div></div><div id="cboxMiddleRight" style="float: left;"></div></div><div style="clear: left;"><div id="cboxBottomLeft" style="float: left;"></div><div id="cboxBottomCenter" style="float: left;"></div><div id="cboxBottomRight" style="float: left;"></div></div></div><div style="position: absolute; width: 9999px; visibility: hidden; display: none;"></div></div></body></html>

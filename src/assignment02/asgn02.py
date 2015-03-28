@@ -7,7 +7,7 @@ Created on Mar 15, 2015
 #import matplotlib.pyplot as plt
 import BeautifulSoup as bs
 
-with open('results_1.html','r') as hand:
+with open('results_3_pl2.html','r') as hand:
     
     content = hand.read()
     soup = bs.BeautifulSoup(content)
@@ -35,5 +35,5 @@ with open('results_1.html','r') as hand:
         print cnt
     print values
 
-    with open('result_1_processed.txt', 'w') as hand2:
+    with open('result_pl2_processed.txt', 'w') as hand2:
         hand2.write(str(values))
