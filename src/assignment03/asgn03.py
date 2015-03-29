@@ -12,7 +12,8 @@ with open('data/train.csv', 'r') as hand:
     for line in hand:
         match=re.search("^(\d+),(.+)$",line )
         if (match):
-            print match.group(1), match.group(2)
-            tokens=word_ 
+            category=match.group(1)
+            text=match.group(2)
+            tokens=word_tokenize(text)
         
     
