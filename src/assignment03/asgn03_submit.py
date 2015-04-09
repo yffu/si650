@@ -6,7 +6,6 @@ Created on Mar 28, 2015
 
 import nltk, re, csv, random
 
-
 import logging
 import numpy as np
 from optparse import OptionParser
@@ -79,7 +78,7 @@ with open('data/train.csv', 'r') as hand:
     
     # other options ngram_range=(3,3)
     
-    count_vect=CountVectorizer(ngram_range=(1,2), tokenizer=LemmaTokenizer(), stop_words='english')
+    count_vect=CountVectorizer(ngram_range=(1,1), tokenizer=LemmaTokenizer(), stop_words='english')
     
     x_train_cnt = count_vect.fit_transform(data)
     
@@ -108,7 +107,7 @@ with open('data/train.csv', 'r') as hand:
     print (len(feature_names))
     # total of61429 features extracted for full train using nltk wordnet, 1-grams. 
     # performance rank 7000 > 10,000 > 15,000 
-    ch2 = SelectKBest(chi2, k=3000)
+    ch2 = SelectKBest(chi2, k=6000)
     
     X_train = ch2.fit_transform(X_train, target)
     
@@ -126,7 +125,7 @@ with open('data/train.csv', 'r') as hand:
     if feature_names:
         feature_names=np.asarray(feature_names)
 
-    clf=RidgeClassifier(tol=1e-2, solver="lsqr")
+    clf=RidgeClassifier(tol=.001, solver="lsqr")
     
     clf.fit(X_train, target)
     
@@ -135,7 +134,7 @@ with open('data/train.csv', 'r') as hand:
     for doc, category in zip(test_data[:10], predicted[:10]):
         print('%r => %s' % (target_name[category], doc))
         
-    with open('data/submission03_ridge_1000_12gram.csv', 'wb') as hand2:
+    with open('data/submission03_ridge_6000_11gram.csv', 'wb') as hand2:
         writer=csv.writer(hand2, delimiter=',')
         writer.writerow(['Id', 'Category'])
         for tid, category in zip(test_ids, predicted):

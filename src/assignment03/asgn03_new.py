@@ -110,13 +110,16 @@ with open('data/train.csv', 'r') as hand:
     
     # other options ngram_range=(3,3)
     
-    count_vect=CountVectorizer(tokenizer=LemmaTokenizer(), stop_words='english')
+    count_vect=CountVectorizer(tokenizer=LemmaTokenizer(), stop_words='english', ngram_range=(1,1))
     
     x_train_cnt = count_vect.fit_transform(x_train)
     
     x_test_cnt = count_vect.transform(x_test)
     
-    tfidf_transformer=TfidfTransformer(sublinear_tf=True, use_idf=True, norm='l2')
+    # initial settings 
+    # tfidf_transformer=TfidfTransformer(sublinear_tf=True, use_idf=True, norm='l2')
+    
+    tfidf_transformer=TfidfTransformer(sublinear_tf=True, use_idf=True, smooth_idf=True, norm='l2')
     
     X_train=tfidf_transformer.fit_transform(x_train_cnt)
     
@@ -138,7 +141,7 @@ with open('data/train.csv', 'r') as hand:
     
     print (len(feature_names))
     
-    ch2 = SelectKBest(chi2, k=7000)
+    ch2 = SelectKBest(chi2, k=10000)
     
     X_train = ch2.fit_transform(X_train, y_train)
     
@@ -149,14 +152,22 @@ with open('data/train.csv', 'r') as hand:
         feature_names = [feature_names[i] for i
                      in ch2.get_support(indices=True)]
     
-    print(len(feature_names))
+    if (len(feature_names) > 80):
+        random.shuffle(feature_names)
+        print feature_names[:80]
+    else:
+        feature_names
+        
+    print("this many features found: ", len(feature_names))
     
     # these are the features found by the chisquared method used in the X-train. 
     
     if feature_names:
         feature_names=np.asarray(feature_names)
-        
-            
+       
+       
+    benchmark(RidgeClassifier(tol=1e-3, solver="lsqr")) 
+'''                
     for clf, name in (
             (RidgeClassifier(tol=1e-2, solver="lsqr"), "Ridge Classifier"),
             (Perceptron(n_iter=50), "Perceptron"),
@@ -164,7 +175,7 @@ with open('data/train.csv', 'r') as hand:
             (KNeighborsClassifier(n_neighbors=10), "kNN"),
             (RandomForestClassifier(n_estimators=100), "Random forest")):
         benchmark(clf)
-        
+
     benchmark(SGDClassifier(alpha=.0001, n_iter=50,
                                        penalty="elasticnet"))
     
@@ -178,32 +189,5 @@ with open('data/train.csv', 'r') as hand:
     ('feature_selection', LinearSVC(penalty="l1", dual=False, tol=1e-3)),
     ('classification', LinearSVC())
     ]))
-            
-    '''
-    
-    #count_vect=CountVectorizer(ngram_range=(3,3), min_df=1)
-    x_train_counts=vectorizer.fit_transform(data)
-    #print x_train_counts.shape
-    
-    tfidf_transformer=TfidfTransformer(use_idf=False)
-    x_train_tfidf=tfidf_transformer.fit_transform(x_train_counts)
-    #print x_train_tfidf.shape
-    
-    clf=SGDClassifier(loss='hinge', penalty='l2', alpha=1e-3, n_iter=5, random_state =42).fit(x_train_tfidf, target)
-    
-    x_new_counts=vectorizer.transform(test_data)
-    
-    x_new_tfidf=tfidf_transformer.transform(x_new_counts)
-    
-    predicted=clf.predict(x_new_tfidf)
-    
-    for doc, category in zip(test_data[:10], predicted[:10]):
-        print('%r => %s' % (target_name[category], doc))
-        
-    with open('data/submission03_svm_tri.csv', 'wb') as hand2:
-        writer=csv.writer(hand2, delimiter=',')
-        writer.writerow(['Id', 'Category'])
-        for tid, category in zip(test_ids, predicted):
-            writer.writerow([tid, category])
             
     '''
